@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/it_user_all"
+        android:title="All users" />
+    <item
+        android:id="@+id/it_user_admins"
+        android:title="Admins" />
+    <item
+        android:id="@+id/it_user_students"
+        android:title="Students" />
+
+</menu>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.ProfileEdit"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvEditType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:textStyle="bold|italic"
+            android:textSize="30sp"
+            android:textColor="#F44336"
+            android:text="Student/Admin Details" />
+
+        <TextView
+            android:id="@+id/tvEditEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="androidstudio@gmail.com"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_below="@id/tvEditType"/>
+
+        <TextView
+            android:id="@+id/tvEditID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID number"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/tvEditEmail"/>
+
+        <EditText
+            android:id="@+id/etEditName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Name"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/tvEditID"/>
+
+        <EditText
+            android:id="@+id/etEditPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone"
+            android:hint="Phone number"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/etEditName"/>
+
+        <Spinner
+            android:id="@+id/spEditDept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:entries="@array/department"
+            android:layout_below="@id/etEditPhone"/>
+
+        <Spinner
+            android:id="@+id/spEditSem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:visibility="visible"
+            android:entries="@array/semester"
+            android:layout_below="@id/spEditDept"/>
+
+        <Spinner
+            android:id="@+id/spEditDesg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:visibility="visible"
+            android:entries="@array/designation"
+            android:layout_below="@id/spEditDept"/>
+<!--NOTE: dept and desg spinner is made overlapping purposely-->
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/spEditSem"/>
+
+    </RelativeLayout>
+
+</ScrollView>

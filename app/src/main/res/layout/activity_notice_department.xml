@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoticeDepartment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Title (max 30 char)"
+                android:id="@+id/tvDeptTitle"
+                android:maxLength="30"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/ibDeptDate"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/a"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/tvDeptDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Date"
+            android:textSize="20sp"
+            android:layout_marginTop="25dp"
+            android:layout_toLeftOf="@id/ibDeptDate"
+            android:layout_below="@id/a"/>
+
+        <TextView
+            android:id="@+id/tvDeptSem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Semester :"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/tvDeptDate"/>
+
+        <Spinner
+            android:id="@+id/spDeptSem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:entries="@array/semester"
+            android:layout_below="@id/tvDeptSem"/>
+
+        <TextView
+            android:id="@+id/tvDeptDept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Department"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/spDeptSem"/>
+
+        <Spinner
+            android:id="@+id/spDeptDept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:entries="@array/department"
+            android:layout_below="@id/tvDeptDept"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/spDeptDept"
+            android:id="@+id/b">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDeptSubject"
+                android:hint="Subject" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/one"
+            android:layout_below="@id/b">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDeptNotice"
+                android:hint="Notice" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Switch
+            android:id="@+id/switchDept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Want to upload file ?    "
+            android:layout_below="@id/one"/>
+
+        <TextView
+            android:id="@+id/tvDeptFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:text="Filename"
+            android:visibility="invisible"
+            android:layout_below="@id/switchDept"/>
+
+        <Button
+            android:id="@+id/btnDeptFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Select a file"
+            android:visibility="invisible"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/tvDeptFile"/>
+    </RelativeLayout>
+</ScrollView>

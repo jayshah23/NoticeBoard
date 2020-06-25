@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoticeExamCell">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Title (max 30 char)"
+                android:id="@+id/tvExamTitle"
+                android:maxLength="30"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/ibExamDate"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/c"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/tvExamDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Date"
+            android:textSize="20sp"
+            android:layout_marginTop="25dp"
+            android:layout_toLeftOf="@id/ibExamDate"
+            android:layout_below="@id/c"/>
+
+        <TextView
+            android:id="@+id/tvExamSem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Semester :"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/tvExamDate"/>
+
+        <Spinner
+            android:id="@+id/spExamSem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:entries="@array/semester"
+            android:layout_below="@id/tvExamSem"/>
+
+        <TextView
+            android:id="@+id/tvExamDept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Department"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/spExamSem"/>
+
+        <Spinner
+            android:id="@+id/spExamDept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:entries="@array/department"
+            android:layout_below="@id/tvExamDept"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/spExamDept"
+            android:id="@+id/d">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvExamSubject"
+                android:hint="Subject" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/d">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvExamNotice"
+                android:hint="Notice" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Switch
+            android:id="@+id/switchExam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Want to upload file ?    "
+            android:layout_below="@id/two"/>
+
+        <TextView
+            android:id="@+id/tvExamFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:text="Filename"
+            android:visibility="invisible"
+            android:layout_below="@id/switchExam"/>
+
+        <Button
+            android:id="@+id/btnExamFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Select a file"
+            android:visibility="invisible"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/tvExamFile"/>
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoticeTypes">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnUploadSingleFile"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:text="Upload a file"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <Button
+            android:id="@+id/btnSports"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Sports Notice"
+            android:layout_below="@id/btnUploadSingleFile"/>
+
+        <Button
+            android:id="@+id/btnExamCell"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:text="Exam Cell Notice"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@id/btnSports"/>
+
+        <Button
+            android:id="@+id/btnDepartment"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:text="Department Notice"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@id/btnExamCell"/>
+
+        <Button
+            android:id="@+id/btnSeminar"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:text="Seminar Notice"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@id/btnDepartment"/>
+    </RelativeLayout>
+
+</ScrollView>

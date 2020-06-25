@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoticeSeminar">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/e"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Title (max 30 char)"
+                android:id="@+id/tvSeminarTitle"
+                android:maxLength="30"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/ibSeminarDate"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/e"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/tvSeminarDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Date"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp"
+            android:layout_toLeftOf="@id/ibSeminarDate"
+            android:layout_below="@id/e"/>
+
+        <ImageButton
+            android:id="@+id/ibSeminarTime"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/ibSeminarDate"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/tvSeminarTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Time"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_toLeftOf="@id/ibSeminarDate"
+            android:layout_below="@id/tvSeminarDate"/>
+
+        <TextView
+            android:id="@+id/tvSeminarSem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Semester :"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/tvSeminarTime"/>
+
+        <Spinner
+            android:id="@+id/spSeminarSem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:entries="@array/semester"
+            android:layout_below="@id/tvSeminarSem"/>
+
+        <TextView
+            android:id="@+id/tvSeminarDept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Department"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/spSeminarSem"/>
+
+        <Spinner
+            android:id="@+id/spSeminarDept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:entries="@array/department"
+            android:layout_below="@id/tvSeminarDept"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/spSeminarDept"
+            android:id="@+id/f">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvSeminarSubject"
+                android:hint="Subject" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/f">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvSeminarNotice"
+                android:hint="Notice" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Switch
+            android:id="@+id/switchSeminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Want to upload file ?    "
+            android:layout_below="@id/three"/>
+
+        <TextView
+            android:id="@+id/tvSeminarFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:text="Filename"
+            android:visibility="invisible"
+            android:layout_below="@id/switchSeminar"/>
+
+        <Button
+            android:id="@+id/btnSeminarFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Select a file"
+            android:visibility="invisible"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/tvSeminarFile"/>
+    </RelativeLayout>
+</ScrollView>

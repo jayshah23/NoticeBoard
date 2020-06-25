@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoticeDetails">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+
+        <TextView
+            android:id="@+id/tvDetailTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="Title"
+            android:textAllCaps="true"
+            android:textColor="#FF0000"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDetailUploadBy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Uploaded by : "
+            android:textStyle="italic"
+            android:layout_below="@id/tvDetailTitle"/>
+
+        <TextView
+            android:id="@+id/tvDetailDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="end"
+            android:text="Upload date :"
+            android:textAlignment="textEnd"
+            android:textColor="#0037FF"
+            android:textStyle="italic"
+            android:layout_below="@id/tvDetailUploadBy"/>
+
+        <TextView
+            android:id="@+id/tvDetailDept"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Department"
+            android:layout_below="@id/tvDetailDate"/>
+
+        <TextView
+            android:id="@+id/tvDetailSem"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Semester"
+            android:layout_below="@id/tvDetailDept"/>
+
+        <TextView
+            android:id="@+id/tvDetailSubject"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Subject"
+            android:layout_below="@id/tvDetailSem"/>
+
+        <TextView
+            android:id="@+id/tvDetailNotice"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notice"
+            android:linksClickable="true"
+            android:autoLink="all"
+            android:textColorLink="#0645AD"
+            android:layout_below="@id/tvDetailSubject"/>
+
+        <TextView
+            android:id="@+id/tvDetailLastDate"
+            android:layout_width="220dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="end"
+            android:text="Last Date"
+            android:textStyle="italic"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/tvDetailNotice"/>
+
+        <TextView
+            android:id="@+id/tvDetailTime"
+            android:layout_width="130dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="Time"
+            android:textStyle="italic"
+            android:layout_below="@id/tvDetailNotice"/>
+
+        <TextView
+            android:id="@+id/tvDetailFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="File"
+            android:textColor="#0000EE"
+            android:layout_below="@id/tvDetailTime"/>
+
+    </RelativeLayout>
+
+</ScrollView>

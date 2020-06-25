@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoticeSports">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/g"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Title (max 30 char)"
+                android:id="@+id/tvSportsTitle"
+                android:maxLength="30"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/ibSportsDate"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/g"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/tvSportsDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Date"
+            android:layout_marginTop="25dp"
+            android:textSize="20sp"
+            android:layout_toLeftOf="@id/ibSportsDate"
+            android:layout_below="@id/g"/>
+
+        <ImageButton
+            android:id="@+id/ibSportsTime"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/ibSportsDate"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/tvSportsTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Time"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:layout_toLeftOf="@id/ibSportsDate"
+            android:layout_below="@id/tvSportsDate"/>
+
+        <TextView
+            android:id="@+id/tvSportsSem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Semester :"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/tvSportsTime"/>
+
+        <Spinner
+            android:id="@+id/spSportsSem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:entries="@array/semester"
+            android:layout_below="@id/tvSportsSem"/>
+
+        <TextView
+            android:id="@+id/tvSportsDept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Department"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/spSportsSem"/>
+
+        <Spinner
+            android:id="@+id/spSportsDept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:entries="@array/department"
+            android:layout_below="@id/tvSportsDept"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/spSportsDept"
+            android:id="@+id/h">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvSportsSubject"
+                android:hint="Subject" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/four"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/h">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvSportsNotice"
+                android:hint="Notice" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Switch
+            android:id="@+id/switchSports"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Want to upload file ?    "
+            android:layout_below="@id/four"/>
+
+        <TextView
+            android:id="@+id/tvSportsFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:text="Filename"
+            android:visibility="invisible"
+            android:layout_below="@id/switchSports"/>
+
+        <Button
+            android:id="@+id/btnSportsFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Select a file"
+            android:visibility="invisible"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/tvSportsFile"/>
+    </RelativeLayout>
+</ScrollView>

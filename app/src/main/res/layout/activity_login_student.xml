@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginStudent">
+
+    <EditText
+        android:id="@+id/etStudentSignInEmail"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="Email"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_above="@id/etStudentSignInPassword"
+        android:layout_centerInParent="true"/>
+
+    <EditText
+        android:id="@+id/etStudentSignInPassword"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="Password"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/btnStudentSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@id/etStudentSignInPassword"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/btnStudentSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@id/btnStudentSignIn"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/btnStudentForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@id/btnStudentSignUp"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

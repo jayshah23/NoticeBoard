@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.list.ListFragment"
+    android:background="#fff">
+
+    <SearchView
+        android:id="@+id/SearchBar_users"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Type to search"
+        android:layout_toLeftOf="@id/ivPopup_users"/>
+
+    <ImageView
+        android:id="@+id/ivPopup_users"
+        android:layout_margin="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_filter_list_black_24dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ListView
+        android:id="@+id/lvUsers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/SearchBar_users"/>
+
+</RelativeLayout>
