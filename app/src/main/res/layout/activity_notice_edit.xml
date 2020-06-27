@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoticeEdit">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <TextView
+            android:id="@+id/tvEditNoticeUploadBy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Uploaded by"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/tvEditNoticeType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notice Type"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/tvEditNoticeUploadBy" />
+
+        <TextView
+            android:id="@+id/tvEditNoticeCDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Upload Date"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/tvEditNoticeType" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/tvEditNoticeCDate">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Title (max 30 char)"
+                android:id="@+id/etEditNoticeTitle"
+                android:maxLength="30"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/ibEditNoticeDate"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/editTitle"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/tvEditNoticeDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Date"
+            android:layout_marginTop="25dp"
+            android:textSize="20sp"
+            android:layout_toLeftOf="@id/ibEditNoticeDate"
+            android:layout_below="@id/editTitle"/>
+
+        <ImageButton
+            android:id="@+id/ibEditNoticeTime"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/tvEditNoticeDate"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/tvEditNoticeTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Time"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:layout_toLeftOf="@id/ibEditNoticeTime"
+            android:layout_below="@id/tvEditNoticeDate"/>
+
+        <TextView
+            android:id="@+id/tvEditNoticeSem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Semester :"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/tvEditNoticeTime"/>
+
+        <Spinner
+            android:id="@+id/spEditNoticeSem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:entries="@array/semester"
+            android:layout_below="@id/tvEditNoticeSem"/>
+
+        <TextView
+            android:id="@+id/tvEditNoticeDept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Department"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/spEditNoticeSem"/>
+
+        <Spinner
+            android:id="@+id/spEditNoticeDept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:entries="@array/department"
+            android:layout_below="@id/tvEditNoticeDept"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/spEditNoticeDept"
+            android:id="@+id/editSubject">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etEditNoticeSubject"
+                android:hint="Subject" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editNotice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/editSubject">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etEditNoticeNotice"
+                android:hint="Notice" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnUpdateNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update Notice"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/editNotice"/>
+
+    </RelativeLayout>
+</ScrollView>

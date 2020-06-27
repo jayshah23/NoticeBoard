@@ -42,7 +42,7 @@
         android:layout_below="@id/imageView2"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnSourceCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Need help ? \n Get our java code"

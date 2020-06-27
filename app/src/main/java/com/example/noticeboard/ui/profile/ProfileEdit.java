@@ -108,17 +108,10 @@ public class ProfileEdit extends AppCompatActivity {
                 final String new_sem = spEditSem.getSelectedItem().toString();
                 final String new_dept = spEditDept.getSelectedItem().toString();
                 final String new_desg = spEditDesg.getSelectedItem().toString();
-//                String old_email = tvEditEmail.getText().toString();
-//                String old_ID = tvEditID.getText().toString();
                 final String old_type = tvEditType.getText().toString().toLowerCase();
                 reference.child(email).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        dataSnapshot.getRef().child("name").setValue(new_name);
-//                        dataSnapshot.getRef().child("phone").setValue(new_phone);
-//                        dataSnapshot.getRef().child("semester").setValue(new_sem);
-//                        dataSnapshot.getRef().child("department").setValue(new_dept);
-//                        dataSnapshot.getRef().child("designation").setValue(new_desg);
                         if (old_type.equals("student")) {
                             dataSnapshot.getRef().child("name").setValue(new_name);
                             dataSnapshot.getRef().child("phone").setValue(new_phone);
@@ -142,6 +135,7 @@ public class ProfileEdit extends AppCompatActivity {
                         Toast.makeText(ProfileEdit.this, "Update unsuccessful \n"+databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+
             }
         });
 

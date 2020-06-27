@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -63,22 +64,36 @@ public class LoginStudent extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if (dataSnapshot.getValue() != null) {
-                                firebaseAuth.signInWithEmailAndPassword(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        if (task.isSuccessful()) {
-                                            Intent i = new Intent(LoginStudent.this, DashboardStudent.class);
-                                            startActivity(i);
+                                String typ = dataSnapshot.child(username.replace(".", "_dot_")).child("type").getValue().toString();
+                                if (typ.equals("student")) {
+                                    firebaseAuth.signInWithEmailAndPassword(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if (task.isSuccessful()) {
+                                                startActivity(new Intent(LoginStudent.this, DashboardStudent.class));
+                                                etStudentSignInEmail.setText("");
+                                                etStudentSignInPassword.setText("");
+                                                etStudentSignInEmail.requestFocus();
+                                                finish();
+                                            }
+                                            else {
+                                                Toast.makeText(LoginStudent.this, "Failure \n" + task.getException(), Toast.LENGTH_SHORT).show();
+                                            }
                                         }
-                                        else {
-                                            Toast.makeText(LoginStudent.this, "Failure \n" + task.getException(), Toast.LENGTH_SHORT).show();
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(LoginStudent.this, "Failure : "+e.getMessage(), Toast.LENGTH_SHORT).show();
                                         }
-                                        etStudentSignInEmail.setText("");
-                                        etStudentSignInPassword.setText("");
-                                        etStudentSignInEmail.requestFocus();
-                                        finish();
-                                    }
-                                });
+                                    });
+                                }
+                                else {
+                                    Toast.makeText(LoginStudent.this, "Only student's can access, "+typ+"'s cannot", Toast.LENGTH_SHORT).show();
+                                    etStudentSignInEmail.setText("");
+                                    etStudentSignInPassword.setText("");
+                                    etStudentSignInEmail.requestFocus();
+                                    finish();
+                                }
                             }
                             else {
                                 Toast.makeText(LoginStudent.this, "No such user exists", Toast.LENGTH_SHORT).show();
@@ -86,9 +101,7 @@ public class LoginStudent extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
+                        public void onCancelled(@NonNull DatabaseError databaseError) {}
                     });
                 }
             }

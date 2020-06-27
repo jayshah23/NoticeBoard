@@ -6,26 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".LoginStudent">
 
-    <EditText
-        android:id="@+id/etStudentSignInEmail"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:hint="Email"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_above="@id/etStudentSignInPassword"
-        android:layout_centerInParent="true"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/passStudent">
 
-    <EditText
-        android:id="@+id/etStudentSignInPassword"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:hint="Password"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_centerInParent="true"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etStudentSignInEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Email" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passStudent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        android:layout_centerInParent="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etStudentSignInPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Password" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnStudentSignIn"
@@ -35,7 +47,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:layout_below="@id/etStudentSignInPassword"
+        android:layout_below="@id/passStudent"
         android:layout_centerInParent="true"/>
 
     <Button

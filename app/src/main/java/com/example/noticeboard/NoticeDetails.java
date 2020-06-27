@@ -54,6 +54,7 @@ public class NoticeDetails extends AppCompatActivity {
         current_date = i.getStringExtra("currdate");
         upload = i.getStringExtra("upload");
         time = i.getStringExtra("time");
+        key = i.getStringExtra("key");
 
         tvDetailTitle.setText(title);
         tvDetailUploadBy.setText(upload);
@@ -65,36 +66,25 @@ public class NoticeDetails extends AppCompatActivity {
         tvDetailTime.setText("Time : "+time);
         tvDetailLastDate.setText("Last Date : "+date);
 
-        //below method is used to get key (notice)
-        reference.orderByChild("subject").equalTo(subject).addValueEventListener(new ValueEventListener() {
+        reference.child(key).addValueEventListener(new ValueEventListener() {
+            @SuppressLint("ClickableViewAccessibility")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    key = ds.getKey();
-                    reference.child(key).addValueEventListener(new ValueEventListener() {
-                        @SuppressLint("ClickableViewAccessibility")
+                if (dataSnapshot.hasChild("files")) {
+                    final String file_url = dataSnapshot.child("files").getValue().toString();
+                    tvDetailFile.setText(file_url);
+                    tvDetailFile.setOnTouchListener(new View.OnTouchListener() {
                         @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.hasChild("files")) {
-                                final String file_url = dataSnapshot.child("files").getValue().toString();
-                                tvDetailFile.setText(file_url);
-                                tvDetailFile.setOnTouchListener(new View.OnTouchListener() {
-                                    @Override
-                                    public boolean onTouch(View v, MotionEvent event) {
-                                        open(file_url);
-                                        return true;
-                                    }
-                                });
-                            }
-                            else tvDetailFile.setVisibility(View.INVISIBLE);
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                        public boolean onTouch(View v, MotionEvent event) {
+                            Intent i = new Intent();
+                            i.setDataAndType(Uri.parse(file_url), Intent.ACTION_VIEW);
+                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(i);
+                            return true;
                         }
                     });
                 }
+                else tvDetailFile.setVisibility(View.INVISIBLE);
             }
 
             @Override
@@ -103,14 +93,6 @@ public class NoticeDetails extends AppCompatActivity {
             }
         });
     }
-
-    private void open(String file_url) {
-        Intent i = new Intent();
-        i.setDataAndType(Uri.parse(file_url), Intent.ACTION_VIEW);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(i);
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

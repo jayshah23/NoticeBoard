@@ -247,7 +247,9 @@ public class NoticeSeminar extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
 
-                                notice n = new notice(title, department, semester, subject, notice, date, current_date, upload, time, "Seminar Notice");String url = uri.toString();
+                                notice n = new notice(title, department, semester, subject, notice, date, current_date,
+                                        upload, time, "Seminar Notice", filename);
+                                String url = uri.toString();
                                 reference.child(filename).setValue(n);
                                 Toast.makeText(NoticeSeminar.this, "Done", Toast.LENGTH_SHORT).show();
 
@@ -285,7 +287,8 @@ public class NoticeSeminar extends AppCompatActivity {
 
             }
             else {
-                notice n = new notice(title, department, semester, subject, notice, date, current_date, upload, time, "Seminar Notice");
+                notice n = new notice(title, department, semester, subject, notice, date, current_date,
+                        upload, time, "Seminar Notice", filename);
                 reference.child(filename).setValue(n);
                 Toast.makeText(NoticeSeminar.this, "Notice added successfully", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(this, Dashboard.class);

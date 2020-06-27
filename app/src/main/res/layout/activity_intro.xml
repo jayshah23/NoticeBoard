@@ -4,24 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcome"
     tools:context=".IntroActivity">
 
-    <Button
-        android:id="@+id/btn2"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Student"
-        android:visibility="visible"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"/>
 
-    <Button
-        android:id="@+id/btn3"
+    <ImageButton
+        android:id="@+id/ibAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Admin"
-        android:layout_below="@id/btn2"
-        android:visibility="visible"
-        android:layout_centerInParent="true"/>
+        app:srcCompat="@drawable/staff"
+        android:layout_centerInParent="true"
+        android:padding="0dp"
+        android:layout_toLeftOf="@id/textView"/>
+
+    <ImageButton
+        android:id="@+id/ibStudent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/student"
+        android:layout_centerInParent="true"
+        android:padding="0dp"
+        android:layout_toRightOf="@id/textView"/>
+
+
 
 </RelativeLayout>

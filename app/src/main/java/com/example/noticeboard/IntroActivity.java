@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -18,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class IntroActivity extends AppCompatActivity {
 
-    Button btn2, btn3;
+    ImageButton ibAdmin, ibStudent;
     FirebaseUser user;
     DatabaseReference reference;
 
@@ -27,8 +28,8 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        btn2 = findViewById(R.id.btn2);
-        btn3 = findViewById(R.id.btn3);
+        ibAdmin = findViewById(R.id.ibAdmin);
+        ibStudent = findViewById(R.id.ibStudent);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         String mail = "";
@@ -36,8 +37,8 @@ public class IntroActivity extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("user");
 
         if (user != null) {
-            btn2.setVisibility(View.INVISIBLE);
-            btn3.setVisibility(View.INVISIBLE);
+            ibAdmin.setVisibility(View.INVISIBLE);
+            ibStudent.setVisibility(View.INVISIBLE);
             mail = user.getEmail();
             un = mail.replace(".", "_dot_");
             reference.child(un).addValueEventListener(new ValueEventListener() {
@@ -64,11 +65,11 @@ public class IntroActivity extends AppCompatActivity {
             });
         }
         else {
-            btn2.setVisibility(View.VISIBLE);
-            btn3.setVisibility(View.VISIBLE);
+            ibAdmin.setVisibility(View.VISIBLE);
+            ibStudent.setVisibility(View.VISIBLE);
         }
 
-        btn2.setOnClickListener(new View.OnClickListener() {
+        ibStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(IntroActivity.this, LoginStudent.class);
@@ -76,7 +77,7 @@ public class IntroActivity extends AppCompatActivity {
             }
         });
 
-        btn3.setOnClickListener(new View.OnClickListener() {
+        ibAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(IntroActivity.this, AdminValidation.class);

@@ -25,6 +25,8 @@ public class AdminValidation extends AppCompatActivity {
             public void onClick(View v) {
                 if (etValidationKey.getText().toString().equals("admin")) {
                     startActivity(new Intent(AdminValidation.this, LoginAdmin.class));
+                    etValidationKey.setText("");
+                    finish();
                 }
                 else {
                     Toast.makeText(AdminValidation.this, "Invalid key", Toast.LENGTH_LONG).show();

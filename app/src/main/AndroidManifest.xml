@@ -14,69 +14,51 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AdminValidation"></activity>
+        <activity android:name=".NoticeEdit"></activity>
+        <activity android:name=".AdminValidation" />
         <activity
-            android:name=".SingleFileUpload"
-            android:screenOrientation="portrait" />
+            android:name=".SingleFileUpload"/>
         <activity
-            android:name=".web_view"
-            android:screenOrientation="portrait" />
+            android:name=".web_view" />
         <activity
-            android:name=".ui.profile.ProfileEdit"
-            android:screenOrientation="portrait" />
+            android:name=".ui.profile.ProfileEdit"/>
         <activity
-            android:name=".NoticeDetails"
-            android:screenOrientation="portrait" />
+            android:name=".NoticeDetails"/>
         <activity
-            android:name=".NoticeSeminar"
-            android:screenOrientation="portrait" />
+            android:name=".NoticeSeminar"/>
         <activity
-            android:name=".NoticeExamCell"
-            android:screenOrientation="portrait" />
+            android:name=".NoticeExamCell"/>
         <activity
-            android:name=".NoticeSports"
-            android:screenOrientation="portrait" />
+            android:name=".NoticeSports"/>
         <activity
-            android:name=".NoticeTypes"
-            android:screenOrientation="portrait" />
+            android:name=".NoticeTypes"/>
         <activity
-            android:name=".NoticeDepartment"
-            android:screenOrientation="portrait" />
+            android:name=".NoticeDepartment" />
         <activity
-            android:name=".StudentSignUpActivity"
-            android:screenOrientation="portrait" />
+            android:name=".StudentSignUpActivity" />
         <activity
-            android:name=".LoginStudent"
-            android:screenOrientation="portrait" />
+            android:name=".LoginStudent"/>
         <activity
-            android:name=".ui.profile.ProfileFragment"
-            android:screenOrientation="portrait" />
+            android:name=".ui.profile.ProfileFragment"/>
         <activity
             android:name=".DashboardStudent"
             android:label="Student"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Dashboard"
             android:label="Admin"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" /> <!-- @string/title_activity_dashboard -->
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ForgotPassword"
-            android:screenOrientation="portrait" />
+            android:name=".ForgotPassword"/>
         <activity
-            android:name=".AdminSignUpActivity"
-            android:screenOrientation="portrait" />
+            android:name=".AdminSignUpActivity"/>
         <activity
-            android:name=".LoginAdmin"
-            android:screenOrientation="portrait" />
+            android:name=".LoginAdmin"/>
         <activity
-            android:name=".ui.about.AboutFragment"
-            android:screenOrientation="portrait" />
+            android:name=".ui.about.AboutFragment"/>
         <activity
             android:name=".IntroActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

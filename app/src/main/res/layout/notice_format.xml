@@ -10,18 +10,38 @@
     android:clickable="true">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView1"
+        android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="10dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="20dp"
         android:layout_margin="5dp">
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFE8DF"
-            android:orientation="vertical">
+            android:background="#FFE8DF">
+
+            <ImageButton
+                android:id="@+id/ibNoticeEdit"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/ic_edit_black_24dp"
+                android:background="@null"
+                android:layout_alignParentRight="true"/>
+
+            <ImageButton
+                android:id="@+id/ibNoticeDelete"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/ic_delete_black_24dp"
+                android:background="@null"
+                android:layout_toLeftOf="@+id/ibNoticeEdit"/>
 
             <TextView
                 android:id="@+id/tvPrintTitle"
@@ -42,15 +62,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="1.8dp"
                 android:layout_marginTop="10dp"
-                android:background="#0A0A0A"/>
+                android:background="#0A0A0A"
+                android:layout_below="@id/tvPrintTitle"/>
 
             <TextView
                 android:id="@+id/tvPrintType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Type"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:hint="Type" />
+                android:layout_below="@id/tvLine"/>
 
             <TextView
                 android:id="@+id/tvPrintUpload"
@@ -61,7 +83,8 @@
                 android:layout_marginRight="20dp"
                 android:text="TextView"
                 android:textColor="#0000ff"
-                android:clickable="true"/>
+                android:clickable="true"
+                android:layout_below="@id/tvPrintType"/>
 
             <TextView
                 android:id="@+id/tvPrintDate"
@@ -72,23 +95,22 @@
                 android:layout_marginRight="20dp"
                 android:text="Date"
                 android:gravity="right"
-                android:textStyle="bold" />
-
+                android:textStyle="bold"
+                android:layout_below="@id/tvPrintUpload"/>
 
             <TextView
                 android:id="@+id/tvPrintLDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:gravity="right"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:textStyle="bold"
-                android:gravity="right"
-                android:text="Last Date" />
+                android:layout_marginBottom="10dp"
+                android:text="Last Date"
+                android:layout_below="@id/tvPrintDate"/>
 
-
-        </LinearLayout>
-
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
