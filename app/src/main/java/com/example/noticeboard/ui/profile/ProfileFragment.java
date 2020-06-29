@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +30,7 @@ public class ProfileFragment extends Fragment {
 
     private TextView tvProfileType,tvProfileID ,tvProfileEmail, tvProfileName, tvProfilePhNum, tvProfileDept,
             tvProfileSem, tvProfileDesg, tvProfileVerify;
-    Button btnEdit;
+    ImageButton ibEdit;
     FirebaseAuth auth;
     DatabaseReference reference;
     FirebaseUser user;
@@ -47,7 +48,7 @@ public class ProfileFragment extends Fragment {
         tvProfileSem = view.findViewById(R.id.tvProfileSem);
         tvProfileDesg = view.findViewById(R.id.tvProfileDesg);
         tvProfileVerify = view.findViewById(R.id.tvProfileVerify);
-        btnEdit = view.findViewById(R.id.btnEdit);
+        ibEdit = view.findViewById(R.id.ibEdit);
         auth = FirebaseAuth.getInstance();
         reference = FirebaseDatabase.getInstance().getReference().child("user");
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -88,7 +89,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        btnEdit.setOnClickListener(new View.OnClickListener() {
+        ibEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(v.getContext(), ProfileEdit.class);
