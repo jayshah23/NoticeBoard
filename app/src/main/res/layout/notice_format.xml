@@ -21,7 +21,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#BAD2F4">
+            android:background="#D3E5FF">
 
             <ImageButton
                 android:id="@+id/ibNoticeEdit"

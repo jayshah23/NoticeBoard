@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.noticeboard.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +22,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 public class ProfileEdit extends AppCompatActivity {
     TextView tvEditType, tvEditEmail, tvEditID;
@@ -103,39 +107,45 @@ public class ProfileEdit extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String new_name = etEditName.getText().toString();
-                final String new_phone = etEditPhone.getText().toString();
-                final String new_sem = spEditSem.getSelectedItem().toString();
-                final String new_dept = spEditDept.getSelectedItem().toString();
-                final String new_desg = spEditDesg.getSelectedItem().toString();
-                final String old_type = tvEditType.getText().toString().toLowerCase();
-                reference.child(email).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (old_type.equals("student")) {
-                            dataSnapshot.getRef().child("name").setValue(new_name);
-                            dataSnapshot.getRef().child("phone").setValue(new_phone);
-                            dataSnapshot.getRef().child("semester").setValue(new_sem);
-                            dataSnapshot.getRef().child("department").setValue(new_dept);
-                            dataSnapshot.getRef().child("designation").setValue("");
-                        }
-                        else if (old_type.equals("admin")) {
-                            dataSnapshot.getRef().child("name").setValue(new_name);
-                            dataSnapshot.getRef().child("phone").setValue(new_phone);
-                            dataSnapshot.getRef().child("semester").setValue("");
-                            dataSnapshot.getRef().child("department").setValue(new_dept);
-                            dataSnapshot.getRef().child("designation").setValue(new_desg);
-                        }
-                        Toast.makeText(ProfileEdit.this, "Update successful", Toast.LENGTH_SHORT).show();
-                        finish();
+                String new_name = etEditName.getText().toString();
+                String new_phone = etEditPhone.getText().toString();
+                String new_sem = spEditSem.getSelectedItem().toString();
+                String new_dept = spEditDept.getSelectedItem().toString();
+                String new_desg = spEditDesg.getSelectedItem().toString();
+                String old_type = tvEditType.getText().toString().toLowerCase();
+
+                if (new_name.isEmpty()) { etEditName.setError("Cannot be empty"); }
+                if (new_phone.isEmpty()) { etEditPhone.setError("Cannot be empty"); }
+                if (new_dept.equals("Select Department")) {
+                    Toast.makeText(ProfileEdit.this, "Select proper dept", Toast.LENGTH_SHORT).show();
+                }
+                else if (!new_name.isEmpty() || !new_phone.isEmpty() || !new_desg.equals("Select Department")) {
+                    HashMap<String, Object> hashMap = new HashMap<>();
+                    hashMap.put("name", new_name);
+                    hashMap.put("phone", new_phone);
+                    hashMap.put("department", new_dept);
+                    if (old_type.equals("student")) {
+                        hashMap.put("semester", new_sem);
+                        hashMap.put("designation", "");
+                    }
+                    else if (old_type.equals("admin")) {
+                        hashMap.put("semester", "");
+                        hashMap.put("designation", new_desg);
                     }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Toast.makeText(ProfileEdit.this, "Update unsuccessful \n"+databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
+                    reference.child(email).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(ProfileEdit.this, "Update successful", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(ProfileEdit.this, "Error : "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
 

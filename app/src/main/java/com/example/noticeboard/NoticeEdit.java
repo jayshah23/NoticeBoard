@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.app.UiAutomation;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,11 +17,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.example.noticeboard.ui.profile.ProfileEdit;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -184,7 +179,7 @@ public class NoticeEdit extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                HashMap hashMap = new HashMap();
+                HashMap<String, Object> hashMap = new HashMap<>();
                 hashMap.put("title", etEditNoticeTitle.getText().toString());
                 hashMap.put("subject", etEditNoticeSubject.getText().toString());
                 hashMap.put("notice", etEditNoticeNotice.getText().toString());
@@ -197,9 +192,9 @@ public class NoticeEdit extends AppCompatActivity {
                 }
                 else hashMap.put("time", tvEditNoticeTime.getText().toString());
 
-                databaseReference.child(key).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
+                databaseReference.child(key).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(Object o) {
+                    public void onSuccess(Void aVoid) {
                         Toast.makeText(NoticeEdit.this, "Notice Update Successful", Toast.LENGTH_SHORT).show();
                         finish();
                     }

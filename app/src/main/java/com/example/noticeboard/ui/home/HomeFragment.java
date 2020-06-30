@@ -1,5 +1,6 @@
 package com.example.noticeboard.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -8,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -16,9 +16,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.noticeboard.Dashboard;
 import com.example.noticeboard.NoticeAdapter;
+import com.example.noticeboard.NoticeTypes;
 import com.example.noticeboard.R;
 import com.example.noticeboard.notice;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,6 +46,7 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
     String sem;
     SwipeRefreshLayout refresh;
     FirebaseUser user;
+    FloatingActionButton fabHome;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -54,10 +58,31 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
         ivPopup_home = view.findViewById(R.id.ivPopup_home);
         refresh = view.findViewById(R.id.refresh);
         user = FirebaseAuth.getInstance().getCurrentUser();
+        fabHome = view.findViewById(R.id.fabHome);
 
         list_view=view.findViewById(R.id.list_view);
         list_view.setHasFixedSize(true);
         list_view.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        fabHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), NoticeTypes.class));
+            }
+        });
+
+        list_view.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) {
+                    fabHome.hide();
+                }
+                else if (dy < 0) {
+                    fabHome.show();
+                }
+            }
+        });
 
         ivPopup_home.setOnClickListener(new View.OnClickListener() {
             @Override
