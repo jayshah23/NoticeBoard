@@ -40,7 +40,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
     private AppBarConfiguration mAppBarConfiguration;
     DrawerLayout drawer;
-//    FloatingActionButton fab;
+    FloatingActionButton fab;
     FirebaseAuth firebaseAuth;
     DatabaseReference reference;
     NavigationView navigationView;
@@ -60,14 +60,14 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(Dashboard.this, NoticeTypes.class);
-//                startActivity(i);
-//            }
-//        });
+        fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Dashboard.this, NoticeTypes.class);
+                startActivity(i);
+            }
+        });
 
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -124,6 +124,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).commit();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                fab.show();
                 break;
 
             case R.id.nav_signout:
@@ -136,6 +137,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             case R.id.nav_profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ProfileFragment()).addToBackStack(null).commit();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                fab.hide();
                 break;
 
             case R.id.nav_svv:
@@ -152,16 +154,19 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
             case R.id.nav_about :
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new AboutFragment()).addToBackStack(null).commit();
+                fab.hide();
                 break;
 
             case R.id.nav_list_users:
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ListFragment()).addToBackStack(null).commit();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                fab.hide();
                 break;
 
             case R.id.nav_files:
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new FilesFragment()).addToBackStack(null).commit();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                fab.hide();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

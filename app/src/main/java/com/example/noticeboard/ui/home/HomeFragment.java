@@ -46,10 +46,9 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
     String sem;
     SwipeRefreshLayout refresh;
     FirebaseUser user;
-    FloatingActionButton fabHome;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        final View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         reference= FirebaseDatabase.getInstance().getReference().child("notice");
         reference.keepSynced(true);
@@ -58,31 +57,10 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
         ivPopup_home = view.findViewById(R.id.ivPopup_home);
         refresh = view.findViewById(R.id.refresh);
         user = FirebaseAuth.getInstance().getCurrentUser();
-        fabHome = view.findViewById(R.id.fabHome);
 
         list_view=view.findViewById(R.id.list_view);
         list_view.setHasFixedSize(true);
         list_view.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        fabHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), NoticeTypes.class));
-            }
-        });
-
-        list_view.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                if (dy > 0) {
-                    fabHome.hide();
-                }
-                else if (dy < 0) {
-                    fabHome.show();
-                }
-            }
-        });
 
         ivPopup_home.setOnClickListener(new View.OnClickListener() {
             @Override
