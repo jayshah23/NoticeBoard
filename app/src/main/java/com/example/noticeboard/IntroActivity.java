@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -60,7 +61,7 @@ public class IntroActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                    Toast.makeText(IntroActivity.this, "Error : "+databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

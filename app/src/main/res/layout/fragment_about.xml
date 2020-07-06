@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,48 +7,84 @@
     tools:context=".ui.about.AboutFragment"
     android:background="#fff">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ABOUT"
-        android:textSize="40sp"
-        android:textAlignment="center"
-        android:textColor="#F44336"
-        android:textStyle="bold"
-        android:gravity="center_horizontal"
-        android:layout_margin="20dp"
-        android:layout_above="@id/imageView2" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="240dp"
-        android:layout_height="156dp"
-        app:srcCompat="@drawable/somaiya"
-        android:layout_centerInParent="true"
-        android:layout_margin="20dp"/>
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ABOUT"
+            android:textSize="40sp"
+            android:textAlignment="center"
+            android:textColor="#F44336"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_margin="20dp" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="NoticeBoard App \n Version 1.0 \n Copyright © KJSIEIT"
-        android:textAlignment="center"
-        android:textColor="#F44336"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:gravity="center_horizontal"
-        android:layout_margin="20dp"
-        android:layout_below="@id/imageView2"/>
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="240dp"
+            android:layout_height="156dp"
+            app:srcCompat="@drawable/somaiya"
+            android:layout_margin="20dp"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/textView3"/>
 
-    <Button
-        android:id="@+id/btnSourceCode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Need help ? \n Get our java code"
-        android:layout_margin="20dp"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/textView4"/>
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NoticeBoard App \n Version 1.0 \n Copyright © KJSIEIT"
+            android:textAlignment="center"
+            android:textColor="#F44336"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:layout_below="@id/imageView2"/>
 
+        <Button
+            android:id="@+id/btnFeedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Provide Feedback"
+            android:layout_margin="20dp"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/textView4"/>
 
-</RelativeLayout>
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:columnCount="4"
+            app:rowCount="1"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/btnFeedback">
+
+            <ImageButton
+                android:id="@+id/ibInstagram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:layout_margin="5dp"
+                android:src="@drawable/instagram_logo" />
+
+            <ImageButton
+                android:id="@+id/ibFacebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:layout_margin="5dp"
+                android:src="@drawable/facebook_logo" />
+
+            <ImageButton
+                android:id="@+id/ibLinkIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:layout_margin="5dp"
+                android:src="@drawable/linkdin_logo" />
+        </androidx.gridlayout.widget.GridLayout>
+    </RelativeLayout>
+</ScrollView>

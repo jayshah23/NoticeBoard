@@ -57,6 +57,7 @@ public class ListFragment extends Fragment implements PopupMenu.OnMenuItemClickL
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                users_list.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     String email = ds.child("email").getValue().toString();
                     String type = ds.child("type").getValue().toString();

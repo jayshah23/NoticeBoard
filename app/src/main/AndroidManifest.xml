@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".NoticeEdit"></activity>
+        <activity android:name=".NoticeEdit"/>
         <activity android:name=".AdminValidation" />
         <activity
             android:name=".SingleFileUpload"/>
@@ -47,7 +47,8 @@
         <activity
             android:name=".Dashboard"
             android:label="Admin"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|screenSize"/><!--this line helps ACTIVITY to retain its state on screen orientation change-->
         <activity
             android:name=".ForgotPassword"/>
         <activity

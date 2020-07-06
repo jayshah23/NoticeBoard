@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -7,110 +7,106 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#FDFCFC"
-    android:clickable="true">
+    android:elevation="10dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="20dp"
+    android:layout_margin="5dp"
+    android:clickable="true"
+    android:focusable="true">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="10dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="20dp"
-        android:layout_margin="5dp">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#D3E5FF">
+            android:scaleType="fitXY"
+            android:src="@drawable/notice_background_croped"/>
 
-            <ImageButton
-                android:id="@+id/ibNoticeEdit"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="5dp"
-                android:src="@drawable/ic_edit_black_24dp"
-                android:background="@null"
-                android:layout_alignParentRight="true"/>
+        <ImageButton
+            android:id="@+id/ibNoticeEdit"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_edit_black_24dp"
+            android:background="@null"
+            android:layout_alignParentEnd="true"
+            tools:ignore="PrivateResource" />
 
-            <ImageButton
-                android:id="@+id/ibNoticeDelete"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="5dp"
-                android:src="@drawable/ic_delete_black_24dp"
-                android:background="@null"
-                android:layout_toLeftOf="@+id/ibNoticeEdit"/>
+        <ImageButton
+            android:id="@+id/ibNoticeDelete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/ic_delete_black_24dp"
+            android:background="@null"
+            android:layout_toStartOf="@+id/ibNoticeEdit"/>
 
-            <TextView
-                android:id="@+id/tvPrintTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:text="TITLE"
-                android:textAlignment="center"
-                android:textColor="#FF0000"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:gravity="center_horizontal" />
+        <TextView
+            android:id="@+id/tvPrintTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="17dp"
+            android:text="TITLE"
+            android:textAlignment="center"
+            android:textColor="#FF0000"
+            android:textStyle="bold"
+            android:layout_toStartOf="@id/ibNoticeDelete"/>
 
-            <TextView
-                android:id="@+id/tvLine"
-                android:layout_width="match_parent"
-                android:layout_height="1.8dp"
-                android:layout_marginTop="10dp"
-                android:background="#0A0A0A"
-                android:layout_below="@id/tvPrintTitle"/>
+        <TextView
+            android:id="@+id/tvLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#0A0A0A"
+            android:layout_below="@id/tvPrintTitle"/>
 
-            <TextView
-                android:id="@+id/tvPrintType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Type"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_below="@id/tvLine"/>
+        <TextView
+            android:id="@+id/tvPrintType"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:hint="Type"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@id/tvLine"/>
 
-            <TextView
-                android:id="@+id/tvPrintUpload"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:text="TextView"
-                android:textColor="#0000ff"
-                android:clickable="true"
-                android:layout_below="@id/tvPrintType"/>
+        <TextView
+            android:id="@+id/tvPrintUpload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="TextView"
+            android:textColor="#0000ff"
+            android:clickable="true"
+            android:layout_below="@id/tvPrintType"
+            android:focusable="true" />
 
-            <TextView
-                android:id="@+id/tvPrintDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:text="Date"
-                android:gravity="right"
-                android:textStyle="bold"
-                android:layout_below="@id/tvPrintUpload"/>
+        <TextView
+            android:id="@+id/tvPrintDate"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Date"
+            android:gravity="end"
+            android:textStyle="bold"
+            android:layout_below="@id/tvPrintUpload"/>
 
-            <TextView
-                android:id="@+id/tvPrintLDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:gravity="right"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
-                android:text="Last Date"
-                android:layout_below="@id/tvPrintDate"/>
+        <TextView
+            android:id="@+id/tvPrintLDate"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="Last Date"
+            android:layout_below="@id/tvPrintDate"/>
 
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".NoticeEdit">
 
     <RelativeLayout
@@ -42,13 +42,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_below="@+id/tvEditNoticeCDate">
+            android:layout_below="@+id/tvEditNoticeCDate"
+            app:counterEnabled="true"
+            app:counterMaxLength="30">
 
             <com.google.android.material.textfield.TextInputEditText
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Title (max 30 char)"
+                android:hint="Title"
                 android:id="@+id/etEditNoticeTitle"
                 android:maxLength="30"/>
         </com.google.android.material.textfield.TextInputLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,137 +7,141 @@
     tools:context=".ui.profile.ProfileFragment"
     android:background="#fff">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Account Details"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:textAlignment="center"
-        android:textColor="#F44336"
-        android:textSize="30sp"
-        android:textStyle="bold|italic"
-        android:gravity="center_horizontal"
-        android:layout_toLeftOf="@id/ibEdit"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <ImageButton
-        android:id="@+id/ibEdit"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_edit_black_24dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@null"
-        android:layout_alignParentEnd="true" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Account Details"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:textColor="#F44336"
+            android:textSize="30sp"
+            android:textStyle="bold|italic"
+            android:gravity="center_horizontal"
+            android:layout_toLeftOf="@id/ibEdit"/>
 
-    <TextView
-        android:id="@+id/tvProfileType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Account Type"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:textAlignment="center"
-        android:gravity="center_horizontal"
-        android:textSize="20sp"
-        android:layout_below="@id/textView2" />
+        <ImageButton
+            android:id="@+id/ibEdit"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_edit_black_24dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:id="@+id/tvProfileID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ID number"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:gravity="center_horizontal"
-        android:layout_below="@id/tvProfileType"/>
+        <TextView
+            android:id="@+id/tvProfileType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Account Type"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:layout_below="@id/textView2" />
 
-    <TextView
-        android:id="@+id/tvProfileEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:textAlignment="center"
-        android:gravity="center_horizontal"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_below="@id/tvProfileID" />
+        <TextView
+            android:id="@+id/tvProfileID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID number"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:layout_below="@id/tvProfileType"/>
 
-    <TextView
-        android:id="@+id/tvProfileName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="20sp"
-        android:layout_below="@id/tvProfileEmail" />
+        <TextView
+            android:id="@+id/tvProfileEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@id/tvProfileID" />
 
-    <TextView
-        android:id="@+id/tvProfilePhNum"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Phone Number"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="20sp"
-        android:layout_below="@id/tvProfileName" />
+        <TextView
+            android:id="@+id/tvProfileName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="20sp"
+            android:layout_below="@id/tvProfileEmail" />
 
-    <TextView
-        android:id="@+id/tvProfileDept"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Department"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="20sp"
-        android:layout_below="@id/tvProfilePhNum" />
+        <TextView
+            android:id="@+id/tvProfilePhNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="20sp"
+            android:layout_below="@id/tvProfileName" />
 
-    <TextView
-        android:id="@+id/tvProfileSem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Semester"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="20sp"
-        android:visibility="visible"
-        android:layout_below="@id/tvProfileDept"/>
+        <TextView
+            android:id="@+id/tvProfileDept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Department"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="20sp"
+            android:layout_below="@id/tvProfilePhNum" />
 
-    <TextView
-        android:id="@+id/tvProfileDesg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Designation"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="20sp"
-        android:visibility="visible"
-        android:layout_below="@id/tvProfileDept"/>
+        <TextView
+            android:id="@+id/tvProfileSem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Semester"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="20sp"
+            android:visibility="visible"
+            android:layout_below="@id/tvProfileDept"/>
 
-    <TextView
-        android:id="@+id/tvProfileVerify"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Verification Status"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginRight="20dp"
-        android:textSize="20sp"
-        android:textColor="#0000ee"
-        android:layout_below="@id/tvProfileDept"/>
+        <TextView
+            android:id="@+id/tvProfileDesg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Designation"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="20sp"
+            android:visibility="visible"
+            android:layout_below="@id/tvProfileDept"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tvProfileVerify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Verification Status"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="20dp"
+            android:textSize="20sp"
+            android:textColor="#0000ee"
+            android:layout_below="@id/tvProfileDept"/>
+    </RelativeLayout>
+</ScrollView>
