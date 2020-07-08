@@ -43,7 +43,8 @@
         <activity
             android:name=".DashboardStudent"
             android:label="Student"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".Dashboard"
             android:label="Admin"

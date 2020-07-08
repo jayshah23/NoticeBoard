@@ -22,8 +22,11 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -44,7 +47,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     FirebaseAuth firebaseAuth;
     DatabaseReference reference;
     NavigationView navigationView;
-    TextView tvDashEmail;
+    TextView tvDashEmail, tvDashName, tvDashType;
     FirebaseUser user;
 
     @Override
@@ -54,11 +57,38 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         firebaseAuth = FirebaseAuth.getInstance();
         reference = FirebaseDatabase.getInstance().getReference("user");
-        tvDashEmail = findViewById(R.id.tvDashEmail);
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view_admin);
+
+        View headerView = navigationView.getHeaderView(0);
+        tvDashEmail = headerView.findViewById(R.id.tvDashEmail);
+        tvDashName = headerView.findViewById(R.id.tvDashName);
+        tvDashType = headerView.findViewById(R.id.tvDashType);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        String em = user.getEmail().replace(".","_dot_");
+        tvDashEmail.setText(user.getEmail());
+        reference.child(em).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String name = dataSnapshot.child("name").getValue().toString();
+                String type = dataSnapshot.child("type").getValue().toString();
+
+                tvDashName.setText(name);
+                tvDashType.setText(type);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -68,10 +98,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
                 startActivity(i);
             }
         });
-
-        drawer = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);

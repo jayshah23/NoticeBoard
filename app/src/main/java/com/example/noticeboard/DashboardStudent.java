@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.noticeboard.ui.files.FilesFragment;
@@ -31,26 +32,62 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class DashboardStudent extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
     private AppBarConfiguration mAppBarConfiguration;
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
+    DatabaseReference reference;
+    NavigationView navigationView;
+    TextView tvDashEmailSt, tvDashNameSt, tvDashTypeSt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard_student);
+
         firebaseAuth = FirebaseAuth.getInstance();
+        reference = FirebaseDatabase.getInstance().getReference("user");
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         Toolbar toolbar = findViewById(R.id.toolbar_st);
         setSupportActionBar(toolbar);
-
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view_student);
+
+        View headerView = navigationView.getHeaderView(0);
+        tvDashEmailSt = headerView.findViewById(R.id.tvDashEmailSt);
         navigationView.setNavigationItemSelectedListener(this);
+        tvDashEmailSt = headerView.findViewById(R.id.tvDashEmailSt);
+        tvDashNameSt = headerView.findViewById(R.id.tvDashNameSt);
+        tvDashTypeSt = headerView.findViewById(R.id.tvDashTypeSt);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        String em = user.getEmail().replace(".","_dot_");
+        tvDashEmailSt.setText(user.getEmail());
+        reference.child(em).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String name = dataSnapshot.child("name").getValue().toString();
+                String type = dataSnapshot.child("type").getValue().toString();
+
+                tvDashNameSt.setText(name);
+                tvDashTypeSt.setText(type);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);

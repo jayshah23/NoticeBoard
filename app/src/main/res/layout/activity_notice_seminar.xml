@@ -8,20 +8,22 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/e"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="30">
 
             <com.google.android.material.textfield.TextInputEditText
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Title (max 30 char)"
+                android:hint="Title"
                 android:id="@+id/tvSeminarTitle"
                 android:maxLength="30"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -31,8 +33,11 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_below="@id/e"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentRight="true"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_date_range_black_24dp"
+            android:background="@null"/>
 
         <TextView
             android:id="@+id/tvSeminarDate"
@@ -40,8 +45,8 @@
             android:layout_height="wrap_content"
             android:text="Select Date"
             android:textSize="20sp"
-            android:layout_marginTop="15dp"
-            android:layout_toLeftOf="@id/ibSeminarDate"
+            android:layout_marginTop="20dp"
+            android:layout_toStartOf="@id/ibSeminarDate"
             android:layout_below="@id/e"/>
 
         <ImageButton
@@ -49,8 +54,11 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_below="@id/ibSeminarDate"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentRight="true"/>
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_access_time_black_24dp"
+            android:background="@null"/>
 
         <TextView
             android:id="@+id/tvSeminarTime"
@@ -59,7 +67,7 @@
             android:text="Select Time"
             android:textSize="20sp"
             android:layout_marginTop="20dp"
-            android:layout_toLeftOf="@id/ibSeminarDate"
+            android:layout_toStartOf="@id/ibSeminarDate"
             android:layout_below="@id/tvSeminarDate"/>
 
         <TextView

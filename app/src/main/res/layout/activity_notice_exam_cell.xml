@@ -8,20 +8,22 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/c"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:counterEnabled="true"
+            app:counterMaxLength="30"
             android:layout_marginTop="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Title (max 30 char)"
+                android:hint="Title"
                 android:id="@+id/tvExamTitle"
                 android:maxLength="30"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -32,7 +34,10 @@
             android:layout_height="30dp"
             android:layout_below="@id/c"
             android:layout_marginTop="20dp"
-            android:layout_alignParentRight="true"/>
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_date_range_black_24dp"
+            android:background="@null"/>
 
         <TextView
             android:id="@+id/tvExamDate"
@@ -40,8 +45,8 @@
             android:layout_height="wrap_content"
             android:text="Select Date"
             android:textSize="20sp"
-            android:layout_marginTop="25dp"
-            android:layout_toLeftOf="@id/ibExamDate"
+            android:layout_marginTop="20dp"
+            android:layout_toStartOf="@id/ibExamDate"
             android:layout_below="@id/c"/>
 
         <TextView
