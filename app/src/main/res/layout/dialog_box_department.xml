@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:columnCount="1"
+        app:rowCount="5">
+
+        <CheckBox
+            android:id="@+id/cb_CS"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CS : Computer Science"/>
+
+        <CheckBox
+            android:id="@+id/cb_IT"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IT : Information Technology"/>
+
+        <CheckBox
+            android:id="@+id/cb_EXTC"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EXTC : Electronics and Telecommunication"/>
+
+        <CheckBox
+            android:id="@+id/cb_ETRX"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ETRX : Electronics"/>
+
+        <CheckBox
+            android:id="@+id/cb_AI_DS"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AI-DS : Artificial Intelligence And Data Science"/>
+    </androidx.gridlayout.widget.GridLayout>
+</RelativeLayout>

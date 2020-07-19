@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:columnCount="2"
+        app:rowCount="4">
+
+        <CheckBox
+            android:id="@+id/cb_semI"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semester I"/>
+
+        <CheckBox
+            android:id="@+id/cb_semII"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semester II"/>
+
+        <CheckBox
+            android:id="@+id/cb_semIII"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semester III"/>
+
+        <CheckBox
+            android:id="@+id/cb_semIV"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semester IV"/>
+
+        <CheckBox
+            android:id="@+id/cb_semV"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semester V"/>
+
+        <CheckBox
+            android:id="@+id/cb_semVI"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semester VI"/>
+
+        <CheckBox
+            android:id="@+id/cb_semVII"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semester VII"/>
+
+        <CheckBox
+            android:id="@+id/cb_semVIII"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semester VIII"/>
+    </androidx.gridlayout.widget.GridLayout>
+</RelativeLayout>
