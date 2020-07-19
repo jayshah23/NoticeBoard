@@ -30,8 +30,6 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.util.ArrayList;
-
 public class SingleFileUpload extends AppCompatActivity {
     TextView tvSingleFileName;
     Button btnSingleFileSelect;

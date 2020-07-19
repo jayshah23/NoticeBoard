@@ -1,6 +1,5 @@
 package com.example.noticeboard.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -16,12 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.noticeboard.Dashboard;
 import com.example.noticeboard.NoticeAdapter;
-import com.example.noticeboard.NoticeTypes;
 import com.example.noticeboard.R;
 import com.example.noticeboard.notice;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -58,9 +54,12 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
         refresh = view.findViewById(R.id.refresh);
         user = FirebaseAuth.getInstance().getCurrentUser();
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setStackFromEnd(true);
+        linearLayoutManager.setReverseLayout(true);
         list_view=view.findViewById(R.id.list_view);
         list_view.setHasFixedSize(true);
-        list_view.setLayoutManager(new LinearLayoutManager(getActivity()));
+        list_view.setLayoutManager(linearLayoutManager);
 
         ivPopup_home.setOnClickListener(new View.OnClickListener() {
             @Override

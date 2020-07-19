@@ -53,39 +53,43 @@
             android:id="@+id/tvDeptSem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select Semester :"
+            android:textSize="17sp"
+            android:text="Click here to select Semester :"
             android:layout_marginTop="15dp"
             android:layout_below="@id/tvDeptDate"/>
 
-        <Spinner
-            android:id="@+id/spDeptSem"
+        <TextView
+            android:id="@+id/tvDeptSemData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:entries="@array/semester"
+            android:textSize="20sp"
+            android:text="Selected Semester"
+            android:layout_marginTop="15dp"
             android:layout_below="@id/tvDeptSem"/>
 
         <TextView
             android:id="@+id/tvDeptDept"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select Department"
+            android:textSize="17sp"
+            android:text="Click here to select Department"
             android:layout_marginTop="20dp"
-            android:layout_below="@id/spDeptSem"/>
+            android:layout_below="@id/tvDeptSemData"/>
 
-        <Spinner
-            android:id="@+id/spDeptDept"
+        <TextView
+            android:id="@+id/tvDeptDeptData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Selected Department"
             android:layout_marginTop="20dp"
-            android:entries="@array/department"
             android:layout_below="@id/tvDeptDept"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_below="@id/spDeptDept"
+            android:layout_below="@id/tvDeptDeptData"
             android:id="@+id/b">
 
             <com.google.android.material.textfield.TextInputEditText

@@ -23,7 +23,7 @@
             android:textSize="30sp"
             android:textStyle="bold|italic"
             android:gravity="center_horizontal"
-            android:layout_toLeftOf="@id/ibEdit"/>
+            android:layout_toStartOf="@id/ibEdit"/>
 
         <ImageButton
             android:id="@+id/ibEdit"
@@ -52,14 +52,14 @@
             android:id="@+id/tvProfileID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID number"
+            android:layout_below="@id/tvProfileType"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="20sp"
-            android:textAlignment="center"
             android:gravity="center_horizontal"
-            android:layout_below="@id/tvProfileType"/>
+            android:text="ID number"
+            android:textAlignment="center"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tvProfileEmail"

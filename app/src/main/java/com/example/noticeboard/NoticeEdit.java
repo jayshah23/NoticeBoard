@@ -7,12 +7,11 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -34,12 +33,13 @@ public class NoticeEdit extends AppCompatActivity {
     EditText etEditNoticeTitle, etEditNoticeSubject, etEditNoticeNotice;
     TextView tvEditNoticeUploadBy, tvEditNoticeType, tvEditNoticeCDate, tvEditNoticeDate, tvEditNoticeTime,
             tvEditNoticeSem, tvEditNoticeDept;
-    Spinner spEditNoticeSem, spEditNoticeDept;
     ImageButton ibEditNoticeDate, ibEditNoticeTime;
     Button btnUpdateNotice;
     Calendar calendar;
     String ampm;
     Boolean timeStatus;
+    CheckBox cb1, cb2, cb3, cb4, cb5, cb6, cb7, cb8, cbCS, cbIT, cbEXTC, cbETRX, cbAI_DS;
+    StringBuilder sem, dept;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +56,22 @@ public class NoticeEdit extends AppCompatActivity {
         tvEditNoticeTime = findViewById(R.id.tvEditNoticeTime);
         tvEditNoticeSem = findViewById(R.id.tvEditNoticeSem);
         tvEditNoticeDept = findViewById(R.id.tvEditNoticeDept);
-        spEditNoticeSem = findViewById(R.id.spEditNoticeSem);
-        spEditNoticeDept = findViewById(R.id.spEditNoticeDept);
         ibEditNoticeDate = findViewById(R.id.ibEditNoticeDate);
         ibEditNoticeTime = findViewById(R.id.ibEditNoticeTime);
         btnUpdateNotice = findViewById(R.id.btnUpdateNotice);
+        cb1 = findViewById(R.id.cb1);
+        cb2 = findViewById(R.id.cb2);
+        cb3 = findViewById(R.id.cb3);
+        cb4 = findViewById(R.id.cb4);
+        cb5 = findViewById(R.id.cb5);
+        cb6 = findViewById(R.id.cb6);
+        cb7 = findViewById(R.id.cb7);
+        cb8 = findViewById(R.id.cb8);
+        cbCS = findViewById(R.id.cbCS);
+        cbIT = findViewById(R.id.cbIT);
+        cbEXTC = findViewById(R.id.cbEXTC);
+        cbETRX = findViewById(R.id.cbETRX);
+        cbAI_DS = findViewById(R.id.cbAI_DS);
 
         calendar = Calendar.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("notice");
@@ -88,17 +99,6 @@ public class NoticeEdit extends AppCompatActivity {
                 tvEditNoticeType.setText(type);
                 tvEditNoticeCDate.setText(cdate);
                 tvEditNoticeDate.setText(date);
-//                tvEditNoticeTime.setText(time);
-
-//                if (!time.equals("")) {
-//                    ibEditNoticeTime.setVisibility(View.VISIBLE);
-//                    tvEditNoticeTime.setVisibility(View.VISIBLE);
-//                    tvEditNoticeTime.setText(time);
-//                }
-//                else {
-//                    tvEditNoticeTime.setVisibility(View.GONE);
-//                    ibEditNoticeTime.setVisibility(View.GONE);
-//                }
 
                 if (time.equals("")) {
                     timeStatus = true;
@@ -115,20 +115,19 @@ public class NoticeEdit extends AppCompatActivity {
                     tvEditNoticeTime.setText(time);
                 }
 
-                ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(NoticeEdit.this,
-                        R.array.department, android.R.layout.simple_spinner_item);
-                adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spEditNoticeDept.setAdapter(adapter1);
-                int pos1 = adapter1.getPosition(branch);
-                spEditNoticeDept.setSelection(pos1);
-
-                ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(NoticeEdit.this,
-                        R.array.semester, android.R.layout.simple_spinner_item);
-                adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spEditNoticeSem.setAdapter(adapter2);
-                int pos2 = adapter2.getPosition(sem);
-                spEditNoticeSem.setSelection(pos2);
-
+                if (sem.contains("1")) { cb1.setChecked(true); }
+                if (sem.contains("2")) { cb2.setChecked(true); }
+                if (sem.contains("3")) { cb3.setChecked(true); }
+                if (sem.contains("4")) { cb4.setChecked(true); }
+                if (sem.contains("5")) { cb5.setChecked(true); }
+                if (sem.contains("6")) { cb6.setChecked(true); }
+                if (sem.contains("7")) { cb7.setChecked(true); }
+                if (sem.contains("8")) { cb8.setChecked(true); }
+                if (branch.contains("CS")) { cbCS.setChecked(true); }
+                if (branch.contains("IT")) { cbIT.setChecked(true); }
+                if (branch.contains("EXTC")) { cbEXTC.setChecked(true); }
+                if (branch.contains("ETRX")) { cbETRX.setChecked(true); }
+                if (branch.contains("AI-DS")) { cbAI_DS.setChecked(true); }
             }
 
             @Override
@@ -179,31 +178,56 @@ public class NoticeEdit extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("title", etEditNoticeTitle.getText().toString());
-                hashMap.put("subject", etEditNoticeSubject.getText().toString());
-                hashMap.put("notice", etEditNoticeNotice.getText().toString());
-                hashMap.put("sem", spEditNoticeSem.getSelectedItem().toString());
-                hashMap.put("branch", spEditNoticeDept.getSelectedItem().toString());
-                hashMap.put("date", tvEditNoticeDate.getText().toString());
+                sem = new StringBuilder();
+                dept = new StringBuilder();
+                sem.append("Sem");
+                if (cb1.isChecked()) { sem.append(" 1,"); }
+                if (cb2.isChecked()) { sem.append(" 2,"); }
+                if (cb3.isChecked()) { sem.append(" 3,"); }
+                if (cb4.isChecked()) { sem.append(" 4,"); }
+                if (cb5.isChecked()) { sem.append(" 5,"); }
+                if (cb6.isChecked()) { sem.append(" 6,"); }
+                if (cb7.isChecked()) { sem.append(" 7,"); }
+                if (cb8.isChecked()) { sem.append(" 8"); }
+                if (cbCS.isChecked()) { dept.append(" CS,"); }
+                if (cbIT.isChecked()) { dept.append(" IT,"); }
+                if (cbEXTC.isChecked()) { dept.append(" EXTC,"); }
+                if (cbETRX.isChecked()) { dept.append(" ETRX,"); }
+                if (cbAI_DS.isChecked()) { dept.append(" AI-DS"); }
 
-                if (timeStatus) {
-                    hashMap.put("time", "");
+                if (etEditNoticeTitle.getText().toString().isEmpty()) { etEditNoticeTitle.setError("Cannot be empty"); }
+                if (etEditNoticeSubject.getText().toString().isEmpty()) { etEditNoticeSubject.setError("Cannot be empty"); }
+                if (etEditNoticeNotice.getText().toString().isEmpty()) { etEditNoticeNotice.setError("Cannot be empty"); }
+                if (sem.toString().equals("Sem") || dept.toString().isEmpty()) { Toast.makeText(NoticeEdit.this, "Select at-least one semester or department", Toast.LENGTH_SHORT).show(); }
+
+                else if (!etEditNoticeTitle.getText().toString().isEmpty() && !etEditNoticeSubject.getText().toString().isEmpty() && !etEditNoticeNotice.getText().toString().isEmpty() && !sem.toString().equals("Sem") && !dept.toString().isEmpty()) {
+                    HashMap<String, Object> hashMap = new HashMap<>();
+                    hashMap.put("title", etEditNoticeTitle.getText().toString());
+                    hashMap.put("subject", etEditNoticeSubject.getText().toString());
+                    hashMap.put("notice", etEditNoticeNotice.getText().toString());
+                    hashMap.put("sem", sem.toString());
+                    hashMap.put("branch", dept.toString());
+                    hashMap.put("date", tvEditNoticeDate.getText().toString());
+
+                    if (timeStatus) {
+                        hashMap.put("time", "");
+                    }
+                    else hashMap.put("time", tvEditNoticeTime.getText().toString());
+
+                    databaseReference.child(key).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(NoticeEdit.this, "Notice Update Successful", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(NoticeEdit.this, "Error : "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
-                else hashMap.put("time", tvEditNoticeTime.getText().toString());
 
-                databaseReference.child(key).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(NoticeEdit.this, "Notice Update Successful", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(NoticeEdit.this, "Error : "+e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
             }
         });
     }

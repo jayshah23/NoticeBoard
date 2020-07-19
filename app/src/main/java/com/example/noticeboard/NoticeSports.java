@@ -7,22 +7,25 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -47,9 +50,8 @@ import java.util.Locale;
 
 public class NoticeSports extends AppCompatActivity {
     ImageButton ibSportsDate, ibSportsTime;
-    TextView tvSportsDate, tvSportsDept, tvSportsSem, tvSportsTime, tvSportsFile;
+    TextView tvSportsDate, tvSportsDept, tvSportsSem, tvSportsTime, tvSportsFile, tvSportsSemData, tvSportsDeptData;
     EditText tvSportsTitle, tvSportsSubject, tvSportsNotice;
-    Spinner spSportsSem, spSportsDept;
     Calendar calendar;
     String ampm;
     DatabaseReference reference;
@@ -59,6 +61,9 @@ public class NoticeSports extends AppCompatActivity {
     Uri uri;
     ProgressDialog progressDialog;
     StorageReference storageReference;
+    AlertDialog.Builder builder;
+    CheckBox cb_semI, cb_semII, cb_semIII, cb_semIV, cb_semV, cb_semVI, cb_semVII, cb_semVIII, cb_CS, cb_IT, cb_EXTC, cb_ETRX, cb_AI_DS;
+    StringBuilder data = new StringBuilder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,14 +79,15 @@ public class NoticeSports extends AppCompatActivity {
         tvSportsTitle = findViewById(R.id.tvSportsTitle);
         tvSportsSubject = findViewById(R.id.tvSportsSubject);
         tvSportsNotice = findViewById(R.id.tvSportsNotice);
-        spSportsSem = findViewById(R.id.spSportsSem);
-        spSportsDept = findViewById(R.id.spSportsDept);
+        tvSportsSemData = findViewById(R.id.tvSportsSemData);
+        tvSportsDeptData = findViewById(R.id.tvSportsDeptData);
         calendar = Calendar.getInstance();
         tvSportsFile = findViewById(R.id.tvSportsFile);
         btnSportsFile = findViewById(R.id.btnSportsFile);
         switchSports = findViewById(R.id.switchSports);
         reference = FirebaseDatabase.getInstance().getReference("notice");
         storageReference = FirebaseStorage.getInstance().getReference("uploads");
+        builder = new AlertDialog.Builder(this);
 
         toolbar = findViewById(R.id.toolbar);
         getSupportActionBar().setTitle("Sports Notice");
@@ -151,6 +157,78 @@ public class NoticeSports extends AppCompatActivity {
                 else ActivityCompat.requestPermissions(NoticeSports.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 9);
             }
         });
+
+        tvSportsSem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final View view = LayoutInflater.from(NoticeSports.this).inflate(R.layout.dialog_box_semester, null);
+                cb_semI = view.findViewById(R.id.cb_semI);
+                cb_semII = view.findViewById(R.id.cb_semII);
+                cb_semIII = view.findViewById(R.id.cb_semIII);
+                cb_semIV = view.findViewById(R.id.cb_semIV);
+                cb_semV = view.findViewById(R.id.cb_semV);
+                cb_semVI = view.findViewById(R.id.cb_semVI);
+                cb_semVII = view.findViewById(R.id.cb_semVII);
+                cb_semVIII = view.findViewById(R.id.cb_semVIII);
+                builder.setView(view);
+                builder.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        data.delete(0, data.length()).append("Sem");
+                        if (cb_semI.isChecked()) { data.append(" 1,"); }
+                        if (cb_semII.isChecked()) { data.append(" 2,"); }
+                        if (cb_semIII.isChecked()) { data.append(" 3,"); }
+                        if (cb_semIV.isChecked()) { data.append(" 4,"); }
+                        if (cb_semV.isChecked()) { data.append(" 5,"); }
+                        if (cb_semVI.isChecked()) { data.append(" 6,"); }
+                        if (cb_semVII.isChecked()) { data.append(" 7,"); }
+                        if (cb_semVIII.isChecked()) { data.append(" 8"); }
+                        if (!cb_semI.isChecked() && !cb_semII.isChecked() && !cb_semIII.isChecked() && !cb_semIV.isChecked() && !cb_semV.isChecked() && !cb_semVI.isChecked() && !cb_semVII.isChecked() && !cb_semVIII.isChecked()) {
+                            Toast.makeText(view.getContext(), "Please select at-least one semester", Toast.LENGTH_SHORT).show();
+                        }
+                        else tvSportsSemData.setText(data);
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+            }
+        });
+
+        tvSportsDept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final View view = LayoutInflater.from(NoticeSports.this).inflate(R.layout.dialog_box_department, null);
+                cb_CS = view.findViewById(R.id.cb_CS);
+                cb_IT = view.findViewById(R.id.cb_IT);
+                cb_EXTC = view.findViewById(R.id.cb_EXTC);
+                cb_ETRX = view.findViewById(R.id.cb_ETRX);
+                cb_AI_DS = view.findViewById(R.id.cb_AI_DS);
+                builder.setView(view);
+                builder.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        data.delete(0, data.length());
+                        if (cb_CS.isChecked()) { data.append(" CS,"); }
+                        if (cb_IT.isChecked()) { data.append(" IT,"); }
+                        if (cb_EXTC.isChecked()) { data.append(" EXTC,"); }
+                        if (cb_ETRX.isChecked()) { data.append(" ETRX,"); }
+                        if (cb_AI_DS.isChecked()) { data.append(" AI-DS"); }
+                        if (!cb_CS.isChecked() && !cb_IT.isChecked() && !cb_EXTC.isChecked() && !cb_ETRX.isChecked() && !cb_AI_DS.isChecked()) {
+                            Toast.makeText(view.getContext(), "Please select at-least one department", Toast.LENGTH_SHORT).show();
+                        }
+                        else tvSportsDeptData.setText(data);
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+            }
+        });
     }
 
     @Override
@@ -159,58 +237,13 @@ public class NoticeSports extends AppCompatActivity {
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        String title = tvSportsTitle.getText().toString();
-//        String date = tvSportsDate.getText().toString();
-//        String time = tvSportsTime.getText().toString();
-//        String semester = spSportsSem.getSelectedItem().toString();
-//        String department = spSportsDept.getSelectedItem().toString();
-//        String subject = tvSportsSubject.getText().toString();
-//        String notice = tvSportsNotice.getText().toString();
-//
-//        if (title.length() < 5) {
-//            tvSportsTitle.setError("Cannot be empty");
-//            tvSportsTitle.requestFocus();
-//        }
-//        if (date.equals("Select Date")) {
-//            tvSportsDate.setError("Select Date");
-//        }
-//        if (time.equals("Select Time")) {
-//            tvSportsTime.setError("Select Time");
-//        }
-//        if (notice.isEmpty()) {
-//            tvSportsNotice.setError("Cannot be empty");
-//            tvSportsNotice.requestFocus();
-//        }
-//        else if (item.getItemId() == R.id.itSent) {
-//            if (!title.isEmpty() && !date.equals("Select Date") && !time.equals("Select Time") && !semester.equals("Select Semester")
-//                    && !department.equals("Select Department") && !subject.isEmpty() && !notice.isEmpty()) {
-//
-//                SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
-//                String currentdate = sdf.format(new Date());
-//                String upload = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-//
-//                notice n = new notice(title, department, semester, subject, notice, date, currentdate, upload, time, "Sports Notice");
-//                reference.push().setValue(n);
-//                Toast.makeText(NoticeSports.this, "Notice added successfully", Toast.LENGTH_SHORT).show();
-//
-//                Intent i = new Intent(this, Dashboard.class);
-//                startActivity(i);
-//                finish();
-//            }
-//            else Toast.makeText(NoticeSports.this, "Enter all fields", Toast.LENGTH_SHORT).show();
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         final String title = tvSportsTitle.getText().toString();
         final String date = tvSportsDate.getText().toString();
         final String time = tvSportsTime.getText().toString();
-        final String semester = spSportsSem.getSelectedItem().toString();
-        final String department = spSportsDept.getSelectedItem().toString();
+        final String semester = tvSportsSemData.getText().toString();
+        final String department = tvSportsDeptData.getText().toString();
         final String subject = tvSportsSubject.getText().toString();
         final String notice = tvSportsNotice.getText().toString();
 
@@ -218,7 +251,7 @@ public class NoticeSports extends AppCompatActivity {
         final SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
         final String current_date = sdf.format(new Date());
         final String filename = System.currentTimeMillis()+"";
-        if (title.length() < 5) {
+        if (title.isEmpty()) {
             tvSportsTitle.setError("Cannot be empty");
             tvSportsTitle.requestFocus();
         }
@@ -230,7 +263,7 @@ public class NoticeSports extends AppCompatActivity {
             tvSportsNotice.requestFocus();
         }
         else if (item.getItemId() == R.id.itSent) {
-            if (!title.isEmpty() && !date.equals("Select Date") && !semester.equals("Select Semester")
+            if (!title.isEmpty() && !date.equals("Select Date") && !semester.isEmpty()
                     && !department.equals("Select Department") && !subject.isEmpty() && !notice.isEmpty() && uri != null) {
 
                 progressDialog = new ProgressDialog(NoticeSports.this);

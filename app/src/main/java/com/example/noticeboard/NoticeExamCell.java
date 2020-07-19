@@ -7,21 +7,24 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,9 +49,8 @@ import java.util.Locale;
 public class NoticeExamCell extends AppCompatActivity {
 
     ImageButton ibExamDate;
-    TextView tvExamDate, tvExamDept, tvExamSem, tvExamFile;
+    TextView tvExamDate, tvExamDept, tvExamSem, tvExamFile, tvExamSemData, tvExamDeptData;
     EditText tvExamTitle, tvExamSubject, tvExamNotice;
-    Spinner spExamSem, spExamDept;
     Calendar calendar;
     DatabaseReference reference;
     Toolbar toolbar;
@@ -57,6 +59,9 @@ public class NoticeExamCell extends AppCompatActivity {
     Uri uri;
     ProgressDialog progressDialog;
     StorageReference storageReference;
+    AlertDialog.Builder builder;
+    CheckBox cb_semI, cb_semII, cb_semIII, cb_semIV, cb_semV, cb_semVI, cb_semVII, cb_semVIII, cb_CS, cb_IT, cb_EXTC, cb_ETRX, cb_AI_DS;
+    StringBuilder data = new StringBuilder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,14 +75,15 @@ public class NoticeExamCell extends AppCompatActivity {
         tvExamTitle = findViewById(R.id.tvExamTitle);
         tvExamSubject = findViewById(R.id.tvExamSubject);
         tvExamNotice = findViewById(R.id.tvExamNotice);
-        spExamSem = findViewById(R.id.spExamSem);
-        spExamDept = findViewById(R.id.spExamDept);
+        tvExamSemData = findViewById(R.id.tvExamSemData);
+        tvExamDeptData = findViewById(R.id.tvExamDeptData);
         calendar = Calendar.getInstance();
         tvExamFile = findViewById(R.id.tvExamFile);
         btnExamFile = findViewById(R.id.btnExamFile);
         switchExam = findViewById(R.id.switchExam);
         reference = FirebaseDatabase.getInstance().getReference("notice");
         storageReference = FirebaseStorage.getInstance().getReference("uploads");
+        builder = new AlertDialog.Builder(this);
 
         toolbar = findViewById(R.id.toolbar);
         getSupportActionBar().setTitle("ExamCell Notice");
@@ -124,6 +130,78 @@ public class NoticeExamCell extends AppCompatActivity {
                 else ActivityCompat.requestPermissions(NoticeExamCell.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 9);
             }
         });
+
+        tvExamSem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final View view = LayoutInflater.from(NoticeExamCell.this).inflate(R.layout.dialog_box_semester, null);
+                cb_semI = view.findViewById(R.id.cb_semI);
+                cb_semII = view.findViewById(R.id.cb_semII);
+                cb_semIII = view.findViewById(R.id.cb_semIII);
+                cb_semIV = view.findViewById(R.id.cb_semIV);
+                cb_semV = view.findViewById(R.id.cb_semV);
+                cb_semVI = view.findViewById(R.id.cb_semVI);
+                cb_semVII = view.findViewById(R.id.cb_semVII);
+                cb_semVIII = view.findViewById(R.id.cb_semVIII);
+                builder.setView(view);
+                builder.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        data.delete(0, data.length()).append("Sem");
+                        if (cb_semI.isChecked()) { data.append(" 1,"); }
+                        if (cb_semII.isChecked()) { data.append(" 2,"); }
+                        if (cb_semIII.isChecked()) { data.append(" 3,"); }
+                        if (cb_semIV.isChecked()) { data.append(" 4,"); }
+                        if (cb_semV.isChecked()) { data.append(" 5,"); }
+                        if (cb_semVI.isChecked()) { data.append(" 6,"); }
+                        if (cb_semVII.isChecked()) { data.append(" 7,"); }
+                        if (cb_semVIII.isChecked()) { data.append(" 8"); }
+                        if (!cb_semI.isChecked() && !cb_semII.isChecked() && !cb_semIII.isChecked() && !cb_semIV.isChecked() && !cb_semV.isChecked() && !cb_semVI.isChecked() && !cb_semVII.isChecked() && !cb_semVIII.isChecked()) {
+                            Toast.makeText(view.getContext(), "Please select at-least one semester", Toast.LENGTH_SHORT).show();
+                        }
+                        else tvExamSemData.setText(data);
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+            }
+        });
+
+        tvExamDept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final View view = LayoutInflater.from(NoticeExamCell.this).inflate(R.layout.dialog_box_department, null);
+                cb_CS = view.findViewById(R.id.cb_CS);
+                cb_IT = view.findViewById(R.id.cb_IT);
+                cb_EXTC = view.findViewById(R.id.cb_EXTC);
+                cb_ETRX = view.findViewById(R.id.cb_ETRX);
+                cb_AI_DS = view.findViewById(R.id.cb_AI_DS);
+                builder.setView(view);
+                builder.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        data.delete(0, data.length());
+                        if (cb_CS.isChecked()) { data.append(" CS,"); }
+                        if (cb_IT.isChecked()) { data.append(" IT,"); }
+                        if (cb_EXTC.isChecked()) { data.append(" EXTC,"); }
+                        if (cb_ETRX.isChecked()) { data.append(" ETRX,"); }
+                        if (cb_AI_DS.isChecked()) { data.append(" AI-DS"); }
+                        if (!cb_CS.isChecked() && !cb_IT.isChecked() && !cb_EXTC.isChecked() && !cb_ETRX.isChecked() && !cb_AI_DS.isChecked()) {
+                            Toast.makeText(view.getContext(), "Please select at-least one department", Toast.LENGTH_SHORT).show();
+                        }
+                        else tvExamDeptData.setText(data);
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+            }
+        });
     }
 
     @Override
@@ -132,61 +210,19 @@ public class NoticeExamCell extends AppCompatActivity {
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        String title = tvExamTitle.getText().toString();
-//        String date = tvExamDate.getText().toString();
-//        String semester = spExamSem.getSelectedItem().toString();
-//        String department = spExamDept.getSelectedItem().toString();
-//        String subject = tvExamSubject.getText().toString();
-//        String notice = tvExamNotice.getText().toString();
-//
-//        if (title.length() < 5) {
-//            tvExamTitle.setError("Cannot be empty");
-//            tvExamTitle.requestFocus();
-//        }
-//        if (date.equals("Select Date")) {
-//            tvExamDate.setError("Select Date");
-//        }
-//        if (notice.isEmpty()) {
-//            tvExamNotice.setError("Cannot be empty");
-//            tvExamNotice.requestFocus();
-//        }
-//        else if (item.getItemId() == R.id.itSent) {
-//            if (!title.isEmpty() && !date.equals("Select Date") && !semester.equals("Select Semester")
-//                    && !department.equals("Select Department") && !subject.isEmpty() && !notice.isEmpty()) {
-//
-//                SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
-//                String currentdate = sdf.format(new Date());
-//                String upload = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-//
-//                notice n = new notice(title, department, semester, subject, notice, date, currentdate, upload, "", "ExamCell Notice");
-//                reference.push().setValue(n);
-//                Toast.makeText(NoticeExamCell.this, "Notice added successfully", Toast.LENGTH_SHORT).show();
-//
-//                Intent i = new Intent(this, Dashboard.class);
-//                startActivity(i);
-//                finish();
-//            }
-//            else Toast.makeText(NoticeExamCell.this, "Enter all fields", Toast.LENGTH_SHORT).show();
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         final String title = tvExamTitle.getText().toString();
         final String date = tvExamDate.getText().toString();
-        final String semester = spExamSem.getSelectedItem().toString();
-        final String department = spExamDept.getSelectedItem().toString();
+        final String semester = tvExamSemData.getText().toString();
+        final String department = tvExamDeptData.getText().toString();
         final String subject = tvExamSubject.getText().toString();
         final String notice = tvExamNotice.getText().toString();
         final String upload = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         final SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
         final String current_date = sdf.format(new Date());
         final String filename = System.currentTimeMillis()+"";
-        if (title.length() < 5) {
+        if (title.isEmpty()) {
             tvExamTitle.setError("Cannot be empty");
             tvExamTitle.requestFocus();
         }

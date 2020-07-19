@@ -66,19 +66,21 @@ public class ProfileFragment extends Fragment {
                 String semester = dataSnapshot.child("semester").getValue().toString();
                 String designation = dataSnapshot.child("designation").getValue().toString();
 
+//                String cut1 = id_number.substring(0,7).replaceAll("[0-9]", "*");
+//                String cut2 = id_number.substring(7);
                 tvProfileType.setText(type);
-                tvProfileID.setText(id_number);
+                tvProfileID.setText("".concat(id_number.substring(0,7).replaceAll("[0-9]", "*")).concat(id_number.substring(7)));
                 tvProfileEmail.setText(email);
-                tvProfileName.setText("Name : ".concat(name));
-                tvProfilePhNum.setText("Contact Number : ".concat(phone));
-                tvProfileDept.setText("Department : ".concat(department));
+                tvProfileName.setText("".concat("Name : "+name));
+                tvProfilePhNum.setText("".concat("Contact Number : ").concat(phone.substring(0,7).replaceAll("[0-9]", "*")).concat(phone.substring(7)));
+                tvProfileDept.setText("".concat("Department : "+department));
                 if (semester.equals("")) {
                     tvProfileSem.setVisibility(View.GONE);
-                    tvProfileDesg.setText("Designation : ".concat(designation));
+                    tvProfileDesg.setText("".concat("Designation : "+designation));
                 }
                 if (designation.equals("")) {
                     tvProfileDesg.setVisibility(View.GONE);
-                    tvProfileSem.setText("Semester : ".concat(semester));
+                    tvProfileSem.setText("".concat("Semester : "+semester));
                 }
 
             }

@@ -74,39 +74,43 @@
             android:id="@+id/tvSeminarSem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select Semester :"
+            android:textSize="17sp"
+            android:text="Click here to select Semester :"
             android:layout_marginTop="15dp"
             android:layout_below="@id/tvSeminarTime"/>
 
-        <Spinner
-            android:id="@+id/spSeminarSem"
+        <TextView
+            android:id="@+id/tvSeminarSemData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:entries="@array/semester"
+            android:textSize="20sp"
+            android:text="Selected Semester"
+            android:layout_marginTop="15dp"
             android:layout_below="@id/tvSeminarSem"/>
 
         <TextView
             android:id="@+id/tvSeminarDept"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select Department"
+            android:textSize="17sp"
+            android:text="Click here to select Department"
             android:layout_marginTop="20dp"
-            android:layout_below="@id/spSeminarSem"/>
+            android:layout_below="@id/tvSeminarSemData"/>
 
-        <Spinner
-            android:id="@+id/spSeminarDept"
+        <TextView
+            android:id="@+id/tvSeminarDeptData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Selected Department"
             android:layout_marginTop="20dp"
-            android:entries="@array/department"
             android:layout_below="@id/tvSeminarDept"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_below="@id/spSeminarDept"
+            android:layout_below="@id/tvSeminarDeptData"
             android:id="@+id/f">
 
             <com.google.android.material.textfield.TextInputEditText
